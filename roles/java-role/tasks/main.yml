@@ -1,0 +1,18 @@
+---
+### installation tasks file for java
+
+- 
+  include_tasks: setup_Debian.yml
+  when: ansible_os_family == "Debian"
+- 
+  include_tasks: setup_RedHat.yml
+  when: ansible_os_family == "RedHat"
+
+- 
+  include_tasks: setup_FreeBSD.yml
+  when: ansible_os_family == "FreeBSD"
+
+### Environment setup
+- name: setting JAVA_HOME
+  shell: export JAVA_HOME={{java_home}}
+
