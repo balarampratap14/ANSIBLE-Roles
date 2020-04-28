@@ -1,0 +1,5 @@
+---
+- hosts: ip
+  become: true
+  roles:
+    - role: java-role
