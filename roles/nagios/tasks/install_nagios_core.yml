@@ -1,26 +1,15 @@
 ---
-<<<<<<< HEAD
 - name: download nagios core at dir "({{ local_cache_dir }}"
   get_url:
      url: https://assets.nagios.com/downloads/nagioscore/releases/{{ nagios_tgz_filename }}
      dest: "{{ local_cache_dir }}"
      mode: 0777
-=======
-- name: download nagios core at dir "({{ local_cache_dir }}/"
-  connection: local
-  get_url:
-     url: https://assets.nagios.com/downloads/nagioscore/releases/{{ nagios_tgz_filename }}
-     dest: "{{ local_cache_dir }}/"
->>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
 
 - name: "Extract from {{ local_cache_dir }}/{{ nagios_tgz_filename }} to {{ nagios_dir }}"
   unarchive:
     src:  "{{ local_cache_dir }}/{{ nagios_tgz_filename }}"
     dest: "{{ nagios_dir }}"
-<<<<<<< HEAD
     remote_src: yes
-=======
->>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
 
 - name: 
   command: ls -l {{ nagios_dir }}
