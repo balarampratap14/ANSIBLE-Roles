@@ -65,12 +65,6 @@
 - name: passlib install
   command: "pip install passlib"
 
-- name: setting up password for {{ nagios_admin_user }}
-  user: 
-    name: "{{ nagios_admin_user }}"
-    password: "{{ nagios_admin_pass | password_hash('sha512') }}"
-  notify: nagios apache2 restart
-
 - name: "Setting password using htpasswd for {{nagios_admin_user}}"
   htpasswd:
     path: "{{nagios_base_dir}}/etc/htpasswd.users"

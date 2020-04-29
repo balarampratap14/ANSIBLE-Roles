@@ -1,0 +1,5 @@
+---
+- name: Initaiting Role
+  hosts: monitoring
+  roles:
+        - role: nagios
