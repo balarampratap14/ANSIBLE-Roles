@@ -6,7 +6,11 @@
     name: nagios.service
     state: started
 
+<<<<<<< HEAD
 - name: httpd start
+=======
+- name: nagios apache2 restart
+>>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
   systemd:
     name: httpd
     state: started

@@ -1,15 +1,26 @@
 ---
+<<<<<<< HEAD
 - name: download nagios core at dir "({{ local_cache_dir }}"
   get_url:
      url: https://assets.nagios.com/downloads/nagioscore/releases/{{ nagios_tgz_filename }}
      dest: "{{ local_cache_dir }}"
      mode: 0777
+=======
+- name: download nagios core at dir "({{ local_cache_dir }}/"
+  connection: local
+  get_url:
+     url: https://assets.nagios.com/downloads/nagioscore/releases/{{ nagios_tgz_filename }}
+     dest: "{{ local_cache_dir }}/"
+>>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
 
 - name: "Extract from {{ local_cache_dir }}/{{ nagios_tgz_filename }} to {{ nagios_dir }}"
   unarchive:
     src:  "{{ local_cache_dir }}/{{ nagios_tgz_filename }}"
     dest: "{{ nagios_dir }}"
+<<<<<<< HEAD
     remote_src: yes
+=======
+>>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
 
 - name: 
   command: ls -l {{ nagios_dir }}
@@ -71,17 +82,27 @@
     path: "{{nagios_base_dir}}/etc/htpasswd.users"
     name: "{{nagios_admin_user}}"
     password: "{{nagios_admin_pass}}"
+<<<<<<< HEAD
     owner: nagios
     group: nagios
     mode: 0644
 
+=======
+    owner: root
+    group: www-data
+    mode: 0640
+>>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
   notify: nagios apache2 restart  
 - name: verifying nagios config files
   command: "{{ nagios_base_dir }}/bin/nagios -v {{ nagios_base_dir }}/etc/nagios.cfg"
   register: result
+<<<<<<< HEAD
   notify: 
    - reload nagios
    - httpd start
+=======
+  notify: reload nagios
+>>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
 
 - debug:
     var: result.stdout_lines
