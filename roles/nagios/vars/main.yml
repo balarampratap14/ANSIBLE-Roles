@@ -1,4 +1,5 @@
 dependency:
+ - firewalld
  - httpd
  - httpd-tools
  - php
