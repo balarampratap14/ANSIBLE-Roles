@@ -1,9 +1,5 @@
 ---
 - name: download nagios plugin at dir "({{ local_cache_dir }}/"
-<<<<<<< HEAD
-=======
-  connection: local
->>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
   get_url:
      url: "https://nagios-plugins.org/download/{{ nagios_plugins_tgz_filename }}"
      dest: "{{ local_cache_dir }}/"
@@ -12,10 +8,7 @@
   unarchive:
     src:  "{{ local_cache_dir }}/{{ nagios_plugins_tgz_filename }}"
     dest: "{{ nagios_dir }}"
-<<<<<<< HEAD
     remote_src: yes
-=======
->>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
 
 - name: Listing the files
   command: ls -l {{ nagios_dir }}

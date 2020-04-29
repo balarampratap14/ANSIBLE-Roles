@@ -71,27 +71,17 @@
     path: "{{nagios_base_dir}}/etc/htpasswd.users"
     name: "{{nagios_admin_user}}"
     password: "{{nagios_admin_pass}}"
-<<<<<<< HEAD
     owner: nagios
     group: nagios
     mode: 0644
 
-=======
-    owner: root
-    group: www-data
-    mode: 0640
->>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
   notify: nagios apache2 restart  
 - name: verifying nagios config files
   command: "{{ nagios_base_dir }}/bin/nagios -v {{ nagios_base_dir }}/etc/nagios.cfg"
   register: result
-<<<<<<< HEAD
   notify: 
    - reload nagios
    - httpd start
-=======
-  notify: reload nagios
->>>>>>> a4bcab6c3da21e04cb59dc34149b1f95cd6ba71b
 
 - debug:
     var: result.stdout_lines
