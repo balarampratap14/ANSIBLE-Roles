@@ -6,7 +6,7 @@
   firewalld:
     permanent: yes
     immediate: yes
-    state: disabled
+    state: enabled
     port: 80/tcp 
 
 - name: SELINUX
