@@ -1,0 +1,7 @@
+---
+# handlers file for elk
+- name: reload elasticsearch
+  systemd:
+    name: elasticsearch
+    state: started
+    daemon_reload: yes

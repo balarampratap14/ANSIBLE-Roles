@@ -1,7 +1,0 @@
----
-# tasks file for java installation on RedHat
-
-- name: install java 8 in centos
-  yum:
-    name: "{{ RedHat_package }}"
-    state: present

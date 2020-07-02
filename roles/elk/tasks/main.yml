@@ -1,0 +1,28 @@
+---
+# tasks file for elk
+- name: Check if java is installed
+  command: java -version
+  register: java_result
+  ignore_errors: True
+
+- name: Conditional role
+  include_role:
+    name: java
+  when: java_result is failed
+
+- include_tasks: elasticsearch.yml
+- name: Conditional role
+  include_role:
+    name: java
+  when: java_result is failed
+- name: Adding a line to jvm.options file
+  lineinfile:
+    path: /etc/elasticsearch/jvm.options
+    line: -XX:-AssumeMP
+- name: Adding a line to jvm.options file
+  lineinfile:
+    path: /etc/elasticsearch/jvm.options
+    line: -XX:ParallelGCThreads=N
+- include_tasks: kibana.yml
+
+- include_tasks: logstash.yml

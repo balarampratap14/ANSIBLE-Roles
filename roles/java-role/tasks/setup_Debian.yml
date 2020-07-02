@@ -1,8 +1,0 @@
----
-# tasks file for java-role
-
-- name: install java 8 on ubuntu
-  apt:
-    name: "{{ Debian_package }}"
-    state: present
-  when: ansible_os_family == "Debian"

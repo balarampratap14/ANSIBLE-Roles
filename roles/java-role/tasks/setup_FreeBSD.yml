@@ -1,7 +1,0 @@
----
-# tasks file for java-role
-
-- name: Installing Java on FreeBSD
-  pkgng:
-    name: "{{ FreeBSD_package }}"
-    state: present

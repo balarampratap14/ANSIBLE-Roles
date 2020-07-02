@@ -1,0 +1,35 @@
+---
+- name: Install Logstash 
+  become: yes
+  yum:
+    name: logstash
+    state: latest
+
+- name: Copying Input Conf
+  become: yes
+  copy:
+    src: logstash/02-beats-input.conf
+    dest: /etc/logstash/conf.d/
+
+- name: Copying Filter Conf
+  become: yes
+  copy:
+    src: logstash/10-syslog-filter.conf
+    dest: /etc/logstash/conf.d/
+
+- name: Copying Output Conf
+  become: yes
+  copy:
+    src: logstash/30-elasticsearch-output.conf
+    dest: /etc/logstash/conf.d/
+
+- name: Testing Logstash configuration 
+  become_user: logstash
+  command: /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t 
+ 
+- name: Enabling Logstash Service
+  become: yes
+  systemd:
+    name: logstash
+    state: started
+    enabled: yes
